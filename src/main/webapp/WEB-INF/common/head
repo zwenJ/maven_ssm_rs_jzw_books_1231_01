@@ -1,0 +1,7 @@
+
+    <base href="<%@include file="../../common/base.jsp"%>">
+
+    <!-- JQuery集合 -->
+    <script type="text/javascript" src="/books/mylib/js/jquery/jquery-3.2.1.js"></script>
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />

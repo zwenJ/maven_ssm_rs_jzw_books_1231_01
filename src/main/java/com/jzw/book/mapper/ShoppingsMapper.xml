@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzw.book.mapper.ShoppingsMapper">
+
+  <resultMap id="BaseResultMap" type="Shoppings">
+    <id column="shopping_id" jdbcType="INTEGER" property="shoppingId" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="book_sum" jdbcType="INTEGER" property="bookSum" />
+    <result column="shopping_date" jdbcType="TIMESTAMP" property="shoppingDate" />
+    <result column="user_id" jdbcType="INTEGER" property="userId"/>
+    <result column="shopping_status" jdbcType="INTEGER" property="shoppingStatus" />
+    <!-- 映射Books -->
+    <association property="books" javaType="Books">
+      <id column="book_id" jdbcType="INTEGER" property="bookId" />
+      <result column="book_name" jdbcType="VARCHAR" property="bookName" />
+      <result column="book_author" jdbcType="VARCHAR" property="bookAuthor" />
+      <result column="book_price" jdbcType="DECIMAL" property="bookPrice" />
+      <result column="book_concern" jdbcType="VARCHAR" property="bookConcern" />
+      <result column="book_details" jdbcType="VARCHAR" property="bookDetails" />
+      <result column="book_date" jdbcType="TIMESTAMP" property="bookDate" />
+      <result column="book_stock" jdbcType="INTEGER" property="bookStock" />
+      <result column="book_status" jdbcType="INTEGER" property="bookStatus" />
+      <result column="type_id" jdbcType="INTEGER" property="typeId" />
+      <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    </association>
+  </resultMap>
+
+  <sql id="Table_A">b_shopping as A</sql>
+  <sql id="Table_B">b_books as B</sql>
+
+  <sql id="Base_Column_List">
+    A.shopping_id, A.book_id, A.shop_id, A.book_sum, A.shopping_date, A.user_id, A.shopping_status
+  </sql>
+
+  <sql id="Base_Column_List_A_B">
+    A.shopping_id, A.book_id, A.shop_id, A.book_sum, A.shopping_date, A.user_id,
+    B.book_id, B.book_name, B.book_author, B.book_price, B.book_concern,
+    B.book_details, B.book_date,B.book_stock, B.book_status, B.type_id, B.shop_id
+  </sql>
+
+  <!-- 查询的方法 根据用户编号和商品编号-->
+  <select id="selectByPrimaryKey" parameterType="com.jzw.book.model.Shoppings" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List_A_B" />
+    from <include refid="Table_A"/> LEFT JOIN <include refid="Table_B"/>
+    on A.book_id = B.book_id
+    WHERE A.user_id = #{userId, jdbcType=INTEGER}
+    <!-- 查询订单的时候，我的购物车中可以显示库存不足的商品，但是查询添加订单的时候只能查询出库存充足的商品 -->
+    <if test="shoppingStatus = 1">
+      AND A.shopping_status = 1
+    </if>
+    <if test="bookId != null and bookId != ''">
+      AND A.book_id = #{bookId, jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <!-- 新增 -->
+  <insert id="insert" parameterType="com.jzw.book.model.Shoppings">
+    insert into b_shopping
+    (book_id, shop_id,book_sum, shopping_date, user_id)
+    values (
+              #{bookId,jdbcType=INTEGER},
+              #{shopId,jdbcType=INTEGER},#{bookSum,jdbcType=INTEGER},
+              #{shoppingDate,jdbcType=TIMESTAMP},#{userId, jdbcType=INTEGER})
+  </insert>
+
+  <!-- 刪除 -->
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from b_shopping
+    where user_id = #{userId, jdbcType=INTEGER}
+    <if test="allDel">
+      AND shopping_id = #{shoppingId,jdbcType=INTEGER}
+    </if>
+  </delete>
+
+
+
+  <!-- 修改商品 -->
+  <update id="updateByPrimaryKey" parameterType="com.jzw.book.model.Shoppings">
+    update b_shopping
+    SET book_sum = #{bookSum,jdbcType=INTEGER}
+    where shopping_id = #{shoppingId,jdbcType=INTEGER}
+  </update>
+
+
+</mapper>
