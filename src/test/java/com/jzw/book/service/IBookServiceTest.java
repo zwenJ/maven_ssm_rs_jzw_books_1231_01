@@ -1,5 +1,6 @@
 package com.jzw.book.service;
 
+import com.jzw.book.BaseTest;
 import com.jzw.book.model.Books;
 import com.jzw.book.util.PageBean;
 import org.junit.Test;
@@ -8,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.junit.Assert.*;
 
 /**
  * 说明：略

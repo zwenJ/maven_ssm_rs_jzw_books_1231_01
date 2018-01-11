@@ -1,13 +1,12 @@
 package com.jzw.book.service;
 
+import com.jzw.book.BaseTest;
 import com.jzw.book.model.Books;
 import com.jzw.book.model.Shoppings;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 /**
  * 说明：略

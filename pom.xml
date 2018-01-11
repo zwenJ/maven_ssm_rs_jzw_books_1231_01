@@ -286,7 +286,7 @@
     <dependency>
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-redis</artifactId>
-      <version>${spring-data.version}</version>
+      <version>1.8.1.RELEASE</version>
     </dependency>
 
     <!-- shiro相关的依赖 -->

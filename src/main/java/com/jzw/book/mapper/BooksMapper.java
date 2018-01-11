@@ -2,6 +2,7 @@ package com.jzw.book.mapper;
 
 import com.jzw.book.model.Books;
 import com.jzw.book.util.PageBean;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public interface BooksMapper {
      * @param pageBean
      * @return
      */
+    @Cacheable(value = "books", condition = "true")
     public List<Books> showBooks(PageBean pageBean);
 
 

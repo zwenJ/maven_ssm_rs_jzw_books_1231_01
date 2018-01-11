@@ -1,16 +1,9 @@
 package com.jzw.book.service;
 
+import com.jzw.book.BaseTest;
 import com.jzw.book.model.Users;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
-
-import static org.junit.Assert.*;
 
 /**
  * 说明：略
@@ -18,7 +11,7 @@ import static org.junit.Assert.*;
  * @author Jzw
  * @date 2017/12/31 18:20
  */
-public class UserServiceTest extends BaseTest{
+public class UserServiceTest extends BaseTest {
 
 
     @Autowired

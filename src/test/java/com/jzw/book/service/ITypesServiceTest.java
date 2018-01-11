@@ -1,9 +1,8 @@
 package com.jzw.book.service;
 
+import com.jzw.book.BaseTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import static org.junit.Assert.*;
 
 /**
  * 说明：略
