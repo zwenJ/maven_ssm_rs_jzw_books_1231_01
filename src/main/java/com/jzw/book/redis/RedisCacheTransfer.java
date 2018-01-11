@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
  * 该类针对RedisCache的静态属性JedisConnectionFactory进行依赖注入
  * @author Jzw
  * @data 2017/12/23  9:32
+ * @deprecated
  */
 @Component
 public class RedisCacheTransfer {

@@ -1,4 +1,4 @@
-package com.jzw.book.service;
+package com.jzw.book;
 
 import org.junit.After;
 import org.junit.Before;

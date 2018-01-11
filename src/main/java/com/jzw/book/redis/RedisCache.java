@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * 说明：略
- *
+ * @deprecated
  * @author Jzw
  * @date 2018/1/2 16:23
  */

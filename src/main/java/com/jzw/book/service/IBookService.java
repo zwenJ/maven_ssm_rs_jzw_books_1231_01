@@ -57,6 +57,4 @@ public interface IBookService {
      */
     public boolean deleteBook(Integer bookId);
 
-
-
 }
